@@ -26,7 +26,7 @@ public class EventController {
 
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public List<Event> retrieveEmployee(@PathVariable UUID id) {
+    public List<Event> getEventsForEmployee(@PathVariable UUID id) {
         requireNonNull(id, "id cannot be null");
         return eventRepository.findByEmployeeUuidOrderByTimestampAsc(id);
     }

@@ -20,6 +20,7 @@ public class MessageConsumer {
 
     @KafkaListener(topics = "${kafka.topic}")
     public void consumerMessage(@Payload EmployeeEvent event) {
+        LOG.info("consumer received event: {}", event.toString());
         Event eventToSave = new Event();
         eventToSave.setEmployeeUuid(event.getEmployeeUuid());
         eventToSave.setOperation(event.getOperation());
