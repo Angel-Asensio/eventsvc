@@ -18,7 +18,7 @@ public class MessageConsumer {
 
     private final EventRepository eventRepository;
 
-    @KafkaListener(topics = "${kafka.topic}")
+    @KafkaListener(topics = "${kafka.topic}", containerFactory = "jsonKafkaListenerContainerFactory")
     public void consumerMessage(@Payload EmployeeEvent event) {
         LOG.info("consumer received event: {}", event.toString());
         Event eventToSave = new Event();
